@@ -39,7 +39,7 @@ class StudentDetail extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    //print('read page');
+    print('read page');
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
