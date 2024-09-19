@@ -65,11 +65,9 @@ class _UpdateStudentState extends State<UpdateStudent> {
       });
 
       if (response.statusCode == 200) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const StudentList(), // Ensure this is correct
-          ),
+        Navigator.pop(
+          context,true
+          
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -83,6 +81,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
 
   @override
   Widget build(BuildContext context) {
+    //print('update student');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Update Student'),

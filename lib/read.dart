@@ -27,9 +27,8 @@ class StudentDetail extends StatelessWidget {
     Navigator.pop(context);
 
     if (response.statusCode == 200) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const StudentList()),
+      Navigator.pop  (
+        context,true
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -37,9 +36,10 @@ class StudentDetail extends StatelessWidget {
       );
     }
   }
-
+  
   @override
   Widget build(BuildContext context) {
+    //print('read page');
     return Scaffold(
       appBar: AppBar(),
       body: Padding(

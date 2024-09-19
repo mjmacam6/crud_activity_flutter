@@ -5,10 +5,12 @@ import 'package:crud_flutter/student.dart';
 class StudentCard extends StatelessWidget {
   final Student student;
   final Future<Null> Function()
-      onCardTapped; // Added onCardTapped to the constructor
+      onCardTapped; 
+  final VoidCallback onTap;// Added onCardTapped to the constructor
 
   const StudentCard({
     super.key,
+    required this.onTap,
     required this.student,
     required this.onCardTapped, // Include this in the constructor
   });
@@ -24,15 +26,7 @@ class StudentCard extends StatelessWidget {
       child: Card(
         margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
         child: InkWell(
-          onTap: () {
-            onCardTapped(); // Call the callback function
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => StudentDetail(student: student),
-              ),
-            );
-          },
+          onTap: onTap, 
           child: Padding(
             padding: const EdgeInsets.all(16.0), // Add padding inside the card
             child: Column(

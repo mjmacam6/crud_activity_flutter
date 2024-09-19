@@ -74,6 +74,7 @@ class _StudentListState extends State<StudentList> {
 
   @override
   Widget build(BuildContext context) {
+    //print('main page');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Students List'),
@@ -85,7 +86,9 @@ class _StudentListState extends State<StudentList> {
               itemBuilder: (context, index) {
                 return StudentCard(
                   student: students[index],
-                  onCardTapped: () async {
+                  onCardTapped: () async {   
+                  }, onTap: () async
+                   { 
                     final result = await Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -98,7 +101,7 @@ class _StudentListState extends State<StudentList> {
                       // Refresh the list after updating or deleting
                       fetchStudentData();
                     }
-                  },
+                   },
                 );
               },
             ),
