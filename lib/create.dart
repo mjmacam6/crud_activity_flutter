@@ -31,8 +31,8 @@ class _CreateStudentState extends State<CreateStudent> {
       _isLoading = true;
     });
 
-    final url = Uri.parse(
-        'http://127.0.0.1:8000/api/students'); // Replace with your API URL
+    //final url = Uri.parse('http://127.0.0.1:8000/api/students'); 
+    final url =   Uri.parse('http://10.0.2.2:8000/api/students');    
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
@@ -46,12 +46,9 @@ class _CreateStudentState extends State<CreateStudent> {
     );
 
     if (response.statusCode == 201) {
-      Navigator.pop(
-          // ignore: use_build_context_synchronously
-          context,
-          true); 
+      Navigator.pop(context,true); 
     } else {
-      // ignore: use_build_context_synchronously
+      
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to create student: ${response.body}')),
       );

@@ -3,7 +3,7 @@ import 'package:crud_flutter/main.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:crud_flutter/student.dart';
-import 'package:crud_flutter/update.dart'; // Import the update screen
+import 'package:crud_flutter/update.dart'; 
 
 class StudentDetail extends StatelessWidget {
   final Student student;
@@ -11,25 +11,24 @@ class StudentDetail extends StatelessWidget {
   const StudentDetail({super.key, required this.student});
 
   Future<void> _deleteStudent(BuildContext context) async {
-    // Show loading screen
+    // loading screen
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => const Center(child: CircularProgressIndicator()),
     );
 
-    // Perform delete operation
+    // api ng delete
     final response = await http.delete(
-      Uri.parse('http://127.0.0.1:8000/api/students/${student.id}'),
+      //Uri.parse('http://127.0.0.1:8000/api/students/${student.id}'),
+      Uri.parse('http://10.0.2.2:8000/api/students/${student.id}'),
     );
 
     // ignore: use_build_context_synchronously
     Navigator.pop(context);
 
     if (response.statusCode == 200) {
-      Navigator.pop  (
-        context,true
-      );
+      Navigator.pop (context,true);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Failed to delete student')),
@@ -70,7 +69,7 @@ class StudentDetail extends StatelessWidget {
                     );
 
                     if (result == true) {
-                      // Trigger a refresh in the main list if an update occurred
+                      // To Trigger a refresh sa main kapag may update na nangyari
                       Navigator.pop(context, true);
                     }
                   },

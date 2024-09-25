@@ -47,7 +47,9 @@ class _StudentListState extends State<StudentList> {
 
   Future<void> fetchStudentData() async {
     final response = await http.get(
-      Uri.parse('http://127.0.0.1:8000/api/students'),
+      //Uri.parse('http://127.0.0.1:8000/api/students'), //for chrome
+      //Uri.parse('http://localhost:8000/api/students'), //for Mac
+      Uri.parse('http://10.0.2.2:8000/api/students'),  //for android
     );
 
     if (response.statusCode == 200) {
